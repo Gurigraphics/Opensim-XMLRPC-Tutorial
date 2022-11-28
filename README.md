@@ -81,6 +81,48 @@ llRemoteData.sendCommand({
 ```
 
 
+# Nodejs example
+
+## 0) Create a project
+```
+npm init -y
+```
+
+## 1) Install xmlrpc
+```
+npm i xmlrpc
+```
+
+## 2) File "main.js"
+
+```js
+const xmlrpc = require('xmlrpc')
+
+var client = xmlrpc.createClient({
+  host: 'localhost',
+  port: 9000
+});
+
+var call = (method, params) => {
+  client.methodCall(method, [params], function(error, value) {
+    console.log( value );
+    console.log( error );
+  });
+}
+
+var method = 'admin_console_command'
+var params = {
+  password: "password",
+  command: 'change region MyRegion'
+} 
+
+call(method, params)
+```
+
+## 3) Run
+```
+node main.js
+```
 
 # References
 
