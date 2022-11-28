@@ -1,7 +1,9 @@
 # Opensim-XMLRPC-Tutorial
+---
 
 # RemoteAdmin example
-
+---
+---
 ## 1) Edit file "MyWorld.ini"
 ```
 [RemoteAdmin]
@@ -50,8 +52,12 @@ rpc.sendCommand({
 */
 ```
 
+
+---
 # llRemoteData example
 
+---
+---
 ## 1) File "script.lsl"
 
 - Add "script.lsl" to a object in World.
@@ -80,20 +86,21 @@ llRemoteData.sendCommand({
 })
 ```
 
-
+---
 # Nodejs example
-
-## 0) Create a project
+---
+---
+## 1) Create a project
 ```
 npm init -y
 ```
 
-## 1) Install xmlrpc
+## 2) Install xmlrpc
 ```
 npm i xmlrpc
 ```
 
-## 2) File "main.js"
+## 3) File "main.js"
 
 ```js
 const xmlrpc = require('xmlrpc')
@@ -119,13 +126,14 @@ var params = {
 call(method, params)
 ```
 
-## 3) Run
+## 4) Run
 ```
 node main.js
 ```
-
+---
 # References
-
+---
+---
 ### All methods RemoteAdmin.json
 https://github.com/MarcelEdward/OpenSim-RemoteAdmin/blob/c72d5e43d331729527d2a919c712de5a13575f0d/RemoteAdmin.json
 
