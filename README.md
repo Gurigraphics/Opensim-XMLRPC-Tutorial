@@ -37,7 +37,7 @@ mono --desktop -O=all OpenSim.exe -console rest
 ```js
 const rpc = new Xmlrpc({
   url: "http://localhost:9000/",
-  password: "secret"
+  password: "password"
 })
 
 // admin_broadcast example
