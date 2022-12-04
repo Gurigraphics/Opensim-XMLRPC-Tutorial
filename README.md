@@ -4,9 +4,18 @@
 # RemoteAdmin example
 ---
 ---
+
+
+## 0) Start server with -console rest
+```
+ulimit -s 1048576
+mono --desktop -O=all OpenSim.exe -console rest
+```
+
 ## 1) Edit file "MyWorld.ini"
 ```
 [RemoteAdmin]
+    enabled = true
     access_password = "password"
     enabled_methods = all
 
