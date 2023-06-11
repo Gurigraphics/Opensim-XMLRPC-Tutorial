@@ -26,8 +26,6 @@ mono --desktop -O=all OpenSim.exe -console rest
 ```
 
 ## 2) File "index.html"
-- Add "jquery"
-- Add "jquery.xmlrpc"
 - Add "xmlrpc.js" 
 - Add "main.js"
 
@@ -35,30 +33,22 @@ mono --desktop -O=all OpenSim.exe -console rest
 ### Try this examples
 
 ```js
-const rpc = new Xmlrpc({
-  url: "http://localhost:9000/",
-  password: "password"
-})
+var url = 'http://111.111.111.111:20800'
+var methodName = 'admin_broadcast'
+var params = { 
+    message: 'the answer is 42',
+    password: "password"
+}
 
-// admin_broadcast example
-rpc.sendCommand({
-  methodName: 'admin_broadcast',
-  params: { message: 'the answer is 42' }
-}).then(function(result){
-  console.log( result[0] )
-})
+var rpc = new XmlRpc(url) 
 
-//admin_console_command example
-/*
-rpc.sendCommand({
-  methodName: 'admin_console_command',
-  params: { 
-    command: 'show uptime' 
-  }
-}).then(function(result){
-  console.log( result[0] )
+rpc.onerror = function (e) {   
+   console.log(e) 
+}
+
+rpc.call( methodName, params, function(response){
+    console.log( response )    
 })
-*/
 ```
 
 
@@ -79,20 +69,24 @@ rpc.sendCommand({
 ## 3) File "main.js"
 ### Try this example
 ```js
-const llRemoteData = new Xmlrpc({
-  url: "http://localhost:20800",
-  channel: "a76d1bd9-10e8-4b08-a25f-59fece3ce696"
-})
+var url = 'http://111.111.111.111:20800'
+var channel = "3037ed7d-1111-1111-1111-274141f8fa1e"
+var methodName = 'llRemoteData'
+var params = { 
+    IntValue: 123,
+    StringValue: 'Hello, world!',
+    Channel: channel
+}
 
-llRemoteData.sendCommand({
-  methodName: 'llRemoteData',
-  params: { 
-    IntValue: 425,
-    StringValue: 'Hello, world!'
-  }
-}).then(function(result){
-  console.log( result[0]  )
-})
+var rpc = new XmlRpc(url) 
+
+rpc.onerror = function (e) {   
+   console.log(e) 
+}
+
+rpc.call( methodName, params, function(response){
+    console.log( response )    
+}) 
 ```
 
 ---
